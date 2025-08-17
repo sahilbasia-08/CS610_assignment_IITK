@@ -1,0 +1,151 @@
+Problem -1 
+
+==24411== Profiling application: ./p1.out
+==24411== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   45.26%  7.3191ms         7  1.0456ms  637.77us  1.2915ms  [CUDA memcpy DtoH]
+                   29.93%  4.8398ms         3  1.6133ms  147.10us  4.5452ms  kernel2_part3(float const *, float*)
+                   12.15%  1.9654ms         2  982.71us  698.82us  1.2666ms  [CUDA memcpy HtoD]
+                    2.78%  449.48us         1  449.48us  449.48us  449.48us  kernel2_1(float const *, float*)
+                    2.68%  433.41us         1  433.41us  433.41us  433.41us  kernel2_4(float const *, float*)
+                    2.67%  431.52us         1  431.52us  431.52us  431.52us  kernel2_2(float const *, float*)
+                    2.44%  394.21us         1  394.21us  394.21us  394.21us  kernel1(float const *, float*)
+                    2.10%  339.33us         1  339.33us  339.33us  339.33us  kernel2_8(float const *, float*)
+      API calls:   78.21%  197.26ms         8  24.658ms  84.527us  196.33ms  cudaMalloc
+                    8.05%  20.311ms         2  10.156ms  27.778us  20.284ms  cudaMallocManaged
+                    5.04%  12.711ms         9  1.4124ms  734.56us  1.9544ms  cudaMemcpy
+                    3.58%  9.0218ms        10  902.18us  183.99us  4.1156ms  cudaFree
+                    2.01%  5.0683ms         2  2.5342ms  2.4839ms  2.5844ms  cudaHostAlloc
+                    1.82%  4.5912ms         8  573.90us  5.1370us  4.5479ms  cudaEventSynchronize
+                    0.85%  2.1488ms         2  1.0744ms  1.0321ms  1.1167ms  cudaFreeHost
+                    0.30%  751.60us       404  1.8600us     149ns  89.570us  cuDeviceGetAttribute
+                    0.07%  177.28us         8  22.160us  20.381us  23.732us  cudaLaunchKernel
+                    0.04%  105.96us        16  6.6220us  2.0950us  13.786us  cudaEventRecord
+                    0.01%  19.550us         4  4.8870us  3.1390us  9.2820us  cuDeviceGetName
+                    0.01%  12.750us         8  1.5930us  1.3600us  2.0150us  cudaEventElapsedTime
+                    0.00%  8.7840us         4  2.1960us     892ns  5.1780us  cuDeviceGetPCIBusId
+                    0.00%  8.2880us         2  4.1440us     559ns  7.7290us  cudaEventCreate
+                    0.00%  3.7700us         2  1.8850us     668ns  3.1020us  cudaEventDestroy
+                    0.00%  1.5260us         8     190ns     143ns     409ns  cuDeviceGet
+                    0.00%  1.3060us         4     326ns     206ns     564ns  cuDeviceTotalMem
+                    0.00%  1.0390us         3     346ns     170ns     666ns  cuDeviceGetCount
+                    0.00%     793ns         4     198ns     160ns     272ns  cuDeviceGetUuid
+
+==24411== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1080 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     295  55.538KB  4.0000KB  0.9766MB  16.00000MB  1.731594ms  Host To Device
+      48  170.67KB  4.0000KB  0.9961MB  8.000000MB  678.3730us  Device To Host
+      39         -         -         -           -  4.792965ms  Gpu page fault groups
+Total CPU Page faults: 72
+
+
+
+Problem -2 
+
+
+==24784== Profiling application: ./p2.out
+==24784== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   54.68%  33.579ms         3  11.193ms  18.368us  33.538ms  cuda_sum(unsigned int*, unsigned int*, unsigned int*, int, int)
+                   16.58%  10.181ms         1  10.181ms  10.181ms  10.181ms  [CUDA memcpy DtoH]
+                   16.54%  10.158ms         1  10.158ms  10.158ms  10.158ms  [CUDA memcpy HtoD]
+                    4.97%  3.0550ms         2  1.5275ms  6.7520us  3.0482ms  add_block_sums(unsigned int*, unsigned int*, int, int)
+                    4.88%  2.9953ms         1  2.9953ms  2.9953ms  2.9953ms  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__scan::ScanAgent<thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::plus<unsigned int>, int, unsigned int, thrust::detail::integral_constant<bool, bool=0>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::plus<unsigned int>, int, cub::ScanTileState<unsigned int, bool=1>, thrust::cuda_cub::__scan::AddInitToExclusiveScan<unsigned int, thrust::plus<unsigned int>>>(thrust::device_ptr<unsigned int>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, unsigned int, thrust::plus<unsigned int>, int)
+                    2.33%  1.4337ms         1  1.4337ms  1.4337ms  1.4337ms  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>, thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>(thrust::device_ptr<unsigned int>, unsigned int)
+                    0.01%  6.6880us         1  6.6880us  6.6880us  6.6880us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__scan::InitAgent<cub::ScanTileState<unsigned int, bool=1>, int>, cub::ScanTileState<unsigned int, bool=1>, int>(bool=1, cub::ScanTileState<unsigned int, bool=1>)
+      API calls:   66.56%  195.31ms         9  21.701ms  2.8390us  194.66ms  cudaMalloc
+                   12.52%  36.733ms         5  7.3466ms  9.4430us  33.623ms  cudaDeviceSynchronize
+                    6.95%  20.408ms         2  10.204ms  10.145ms  10.264ms  cudaMemcpyAsync
+                    6.91%  20.276ms         2  10.138ms  34.964us  20.241ms  cudaMallocManaged
+                    5.14%  15.079ms        11  1.3708ms  2.3350us  6.0849ms  cudaFree
+                    1.61%  4.7178ms         4  1.1794ms  3.5320us  2.9999ms  cudaStreamSynchronize
+                    0.24%  707.94us       404  1.7520us     116ns  93.134us  cuDeviceGetAttribute
+                    0.04%  112.59us         8  14.073us  4.4880us  29.930us  cudaLaunchKernel
+                    0.01%  19.610us         4  4.9020us  2.9870us  9.7190us  cuDeviceGetName
+                    0.01%  16.323us         2  8.1610us  5.6160us  10.707us  cudaEventRecord
+                    0.00%  11.706us         1  11.706us  11.706us  11.706us  cudaFuncGetAttributes
+                    0.00%  10.541us         2  5.2700us     671ns  9.8700us  cudaEventCreate
+                    0.00%  9.5650us         4  2.3910us     654ns  6.3700us  cuDeviceGetPCIBusId
+                    0.00%  6.1890us         1  6.1890us  6.1890us  6.1890us  cudaEventSynchronize
+                    0.00%  4.5650us        37     123ns      96ns     261ns  cudaGetLastError
+                    0.00%  4.4520us         2  2.2260us     709ns  3.7430us  cudaEventDestroy
+                    0.00%  4.2950us         9     477ns     250ns  1.6520us  cudaGetDevice
+                    0.00%  2.8530us         5     570ns     245ns  1.4830us  cudaDeviceGetAttribute
+                    0.00%  1.9930us         1  1.9930us  1.9930us  1.9930us  cudaEventElapsedTime
+                    0.00%  1.4020us         8     175ns     121ns     420ns  cuDeviceGet
+                    0.00%  1.1400us         4     285ns     239ns     410ns  cuDeviceTotalMem
+                    0.00%     880ns         6     146ns     109ns     217ns  cudaPeekAtLastError
+                    0.00%     812ns         3     270ns     155ns     401ns  cuDeviceGetCount
+                    0.00%     667ns         4     166ns     130ns     246ns  cuDeviceGetUuid
+                    0.00%     233ns         1     233ns     233ns     233ns  cudaGetDeviceCount
+
+==24784== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1080 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     856  76.561KB  4.0000KB  0.9922MB  64.00000MB  11.26996ms  Host To Device
+     384  170.67KB  4.0000KB  0.9961MB  64.00000MB  10.37151ms  Device To Host
+     339         -         -         -           -  30.72517ms  Gpu page fault groups
+Total CPU Page faults: 384
+
+
+Problem -3 
+
+
+==26003== Profiling application: ./pr3_1.out
+==26003== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   55.60%  110.261s     25045  4.4025ms  4.3396ms  20.985ms  [CUDA memcpy HtoH]
+                   40.26%  79.8428s     25045  3.1880ms  3.1818ms  6.2691ms  [CUDA memset]
+                    4.14%  8.20832s     25045  327.74us  299.91us  1.2651ms  computeKernel(double*, double*, double*, double*, int*, long)
+                    0.00%  6.8490us         4  1.7120us  1.4080us  2.4330us  [CUDA memcpy HtoD]
+      API calls:   57.70%  110.488s     25049  4.4109ms  3.9190us  20.995ms  cudaMemcpy
+                   42.04%  80.5008s     25045  3.2142ms  3.2076ms  6.4350ms  cudaMemset
+                    0.14%  277.49ms     25045  11.079us  8.8250us  46.481us  cudaLaunchKernel
+                    0.11%  208.86ms         2  104.43ms     901ns  208.86ms  cudaEventCreate
+                    0.01%  11.829ms         1  11.829ms  11.829ms  11.829ms  cudaHostAlloc
+                    0.00%  4.9040ms         1  4.9040ms  4.9040ms  4.9040ms  cudaFreeHost
+                    0.00%  801.28us       404  1.9830us     136ns  102.28us  cuDeviceGetAttribute
+                    0.00%  250.88us         4  62.719us  2.9760us  218.40us  cudaFree
+                    0.00%  112.63us         4  28.156us  2.9660us  100.02us  cudaMalloc
+                    0.00%  21.578us         4  5.3940us  3.4640us  10.019us  cuDeviceGetName
+                    0.00%  16.308us         2  8.1540us  5.9830us  10.325us  cudaEventRecord
+                    0.00%  10.893us         4  2.7230us     706ns  8.0450us  cuDeviceGetPCIBusId
+                    0.00%  5.3800us         1  5.3800us  5.3800us  5.3800us  cudaEventSynchronize
+                    0.00%  1.8430us         1  1.8430us  1.8430us  1.8430us  cudaEventElapsedTime
+                    0.00%  1.8380us         2     919ns     513ns  1.3250us  cudaEventDestroy
+                    0.00%  1.6810us         8     210ns     131ns     474ns  cuDeviceGet
+                    0.00%  1.2200us         4     305ns     193ns     490ns  cuDeviceTotalMem
+                    0.00%     868ns         4     217ns     174ns     317ns  cuDeviceGetUuid
+                    0.00%     817ns         3     272ns     163ns     434ns  cuDeviceGetCount
+
+
+
+Problem -4 
+
+
+==25081== Profiling application: ./p4.out
+==25081== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   38.69%  262.15us         6  43.691us  2.4320us  85.249us  [CUDA memcpy DtoH]
+                   20.75%  140.55us         1  140.55us  140.55us  140.55us  kernel3D_optimized(float const *, float*, int)
+                   19.56%  132.51us         2  66.256us  4.0640us  128.45us  [CUDA memcpy HtoD]
+                   18.45%  124.99us         1  124.99us  124.99us  124.99us  kernel3D_linear(float const *, float*, int)
+                    1.29%  8.7360us         1  8.7360us  8.7360us  8.7360us  kernel2D_linear(float const *, float*, int)
+                    1.26%  8.5440us         1  8.5440us  8.5440us  8.5440us  kernel2D_optimized(float const *, float*, int)
+      API calls:   94.59%  279.47ms         2  139.74ms  1.0270us  279.47ms  cudaEventCreate
+                    2.78%  8.2219ms         8  1.0277ms  14.488us  2.4989ms  cudaMemcpy
+                    2.24%  6.6236ms         4  1.6559ms  6.5340us  6.5215ms  cudaFree
+                    0.26%  762.91us       404  1.8880us     131ns  89.633us  cuDeviceGetAttribute
+                    0.07%  211.37us         4  52.843us  3.0060us  105.38us  cudaMalloc
+                    0.02%  47.479us         6  7.9130us  1.1830us  18.948us  cudaLaunchKernel
+                    0.01%  30.305us        12  2.5250us  1.6350us  7.0830us  cudaEventRecord
+                    0.01%  30.038us         6  5.0060us  4.7710us  5.1390us  cudaEventSynchronize
+                    0.01%  20.766us         4  5.1910us  3.6670us  8.9720us  cuDeviceGetName
+                    0.01%  14.809us         4  3.7020us     761ns  9.1630us  cuDeviceGetPCIBusId
+                    0.00%  6.7570us         6  1.1260us     846ns  1.6790us  cudaEventElapsedTime
+                    0.00%  1.8040us         2     902ns     410ns  1.3940us  cudaEventDestroy
+                    0.00%  1.6290us         8     203ns     136ns     439ns  cuDeviceGet
+                    0.00%  1.1910us         4     297ns     205ns     516ns  cuDeviceTotalMem
+                    0.00%     898ns         4     224ns     167ns     309ns  cuDeviceGetUuid
+                    0.00%     809ns         3     269ns     170ns     453ns  cuDeviceGetCount

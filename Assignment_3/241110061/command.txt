@@ -1,0 +1,24 @@
+PROB - 1
+g++  -g -std=c++17 -masm=att -march=native -O2 -fopenmp -fverbose-asm -fno-asynchronous-unwind-tables -fno-exceptions -fno-rtti problem1.cpp -o problem1.out
+g++  -g -std=c++17 -masm=att -march=native -O2 -fopenmp -fverbose-asm -fno-asynchronous-unwind-tables -fno-exceptions -fno-rtti problem1_less_opt.cpp -o problem1_less_opt.out
+
+PROB - 2
+g++  -g -std=c++17 -masm=att -march=native -O2 -fopenmp -fverbose-asm -fno-asynchronous-unwind-tables -fno-exceptions -fno-rtti problem2.cpp -o problem2.out
+
+PROB - 3
+g++  -g -std=c++17 -masm=att -march=native -O2 -fopenmp -fverbose-asm -fno-asynchronous-unwind-tables -fno-exceptions -fno-rtti problem3.cpp -o problem3.out -pthread
+
+PROB - 4
+PART - 1
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0.c -o problem4-v0.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_1.c -o problem4-v0_1.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_2.c -o problem4-v0_2.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_3.c -o problem4-v0_3.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_4.c -o problem4-v0_4.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_5.c -o problem4-v0_5.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_6.c -o problem4-v0_6.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L problem4-v0_7.c -o problem4-v0_7.out
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L 241110061-prob4-v1.c -o 241110061-prob4-v1.out
+
+PART - 2
+gcc -O3 -std=c17 -D_POSIX_C_SOURCE=199309L 241110061-prob4-v2.c -o 241110061-prob4-v2.out -fopenmp

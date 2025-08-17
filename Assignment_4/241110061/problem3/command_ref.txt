@@ -1,0 +1,7 @@
+nvcc -ccbin /bin/g++-10 -std=c++17 -arch=sm_61 -lineinfo -res-usage -src-in-ptx pr3_1.cu -o pr3_1.out
+
+nvcc -ccbin /bin/g++-10 -std=c++17 -arch=sm_61 -lineinfo -res-usage -src-in-ptx pr3_2.cu -o pr3_2.out
+
+nvcc -ccbin /bin/g++-10 -std=c++17 -arch=sm_61 -lineinfo -res-usage -src-in-ptx pr3_3.cu -o pr3_3.out
+
+nvcc -ccbin /bin/g++-10 -std=c++17 -arch=sm_61 -lineinfo -res-usage -src-in-ptx pr3_4.cu -o pr3_4.out

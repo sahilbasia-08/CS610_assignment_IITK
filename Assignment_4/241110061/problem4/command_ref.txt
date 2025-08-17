@@ -1,0 +1,1 @@
+nvcc -ccbin /bin/g++-10 -std=c++17 -arch=sm_61 -lineinfo -res-usage -src-in-ptx p4.cu -o p4.out
